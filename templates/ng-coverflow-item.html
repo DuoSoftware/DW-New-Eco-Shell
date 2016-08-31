@@ -1,0 +1,11 @@
+<div class="ng-coverflow-item" layout="row" layout-align="center start">
+    <md-card class="featured-app-card " layout="column" layout-align="end center" style="background-image:url('{{item.iconUrl}}'),url(images/market.jpg);" ng-class="{'featured-focused':selectedIndex == item.index}">
+        <h2>{{item.name}}</h2>
+        <p>{{item.developer}}</p>
+        <div layout="row" layout-align="space-between center" class="featured-app-card-footer">
+            <star-rating-num rating="item.avgrating">
+            </star-rating-num>
+            <p>{{item.price | currency}}</p>
+        </div>
+    </md-card>
+</div>

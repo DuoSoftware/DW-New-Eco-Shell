@@ -1,0 +1,18 @@
+<md-dialog ng-init="introIndex=0;">
+
+    <md-content layout="column" layout-align="start start" style="overflow:hidden;width:100%;max-width:700px;">
+        <div style="background-image:url(images/expired.png);height:55vh;width:100%;"></div>
+        <!--                <img src="images/adas.jpg" class="intro-image">-->
+
+        <div layout="column" layout-align="center start" class="expired-info">
+            <h1>Subscription Expired</h1>
+            <span>your subscription has expired. please do make the payment to continue the service.</span>
+
+        </div>
+        <div layout="row" layout-align="end center" class="intro-footer">
+            <md-button class="md-primary" ng-click="renewit()">RenEw it!</md-button>
+        </div>
+    </md-content>
+    </md-tab>
+
+</md-dialog>

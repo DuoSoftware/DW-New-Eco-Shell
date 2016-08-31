@@ -1,0 +1,9 @@
+<coreapp-container routedappname="'MarketPlace'" routedappiconuri="routedAppIconUri" accentpalette="mp.theme.primary">
+    <perfect-scrollbar class="systemTrayScroller" wheel-propagation="false" wheel-speed="6">
+        <md-content md-theme="green-dark" ng-controller="marketplace-main-controller as mp" ui-view>
+
+            <ng-include src="'core_apps/appmarket/partials/marketplace-landing.html'" layout="column" layout-align="start center" style="background-color: rgba(0,0,0,0.2);"> </ng-include>
+
+        </md-content>
+    </perfect-scrollbar>
+</coreapp-container>

@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Finance",
+        "description": "1",
+        "imageUrl": "icons/ic_attach_money_24px.svg",
+        "apps": []
+  },
+    {
+        "name": "Human Resource Management",
+        "description": "1",
+        "imageUrl": "icons/ic_people_24px.svg",
+        "apps": []
+  },
+    {
+        "name": "Production ",
+        "description": "1",
+        "imageUrl": "icons/ic_local_shipping_24px.svg",
+        "apps": []
+  },
+    {
+        "name": "Operations Management",
+        "description": "1",
+        "imageUrl": "icons/ic_settings_applications_24px.svg",
+        "apps": []
+  },
+    {
+        "name": "Sales & Marketing",
+        "description": "1",
+        "imageUrl": "icons/ic_trending_up_24px.svg",
+        "apps": []
+  },
+    {
+        "name": "Legal",
+        "description": "1",
+        "imageUrl": "icons/ic_gavel_24px.svg",
+        "apps": []
+  },
+    {
+        "name": "Social Media",
+        "description": "1",
+        "imageUrl": "icons/ic_share_24px.svg",
+        "apps": []
+  },
+    {
+        "name": "Business Intelligence",
+        "description": "1",
+        "imageUrl": "icons/ic_business_24px.svg",
+        "apps": []
+  },
+    {
+        "name": "Subscription and Billing",
+        "description": "1",
+        "imageUrl": "icons/ic_subscriptions_24px.svg",
+        "apps": []
+  },
+    {
+        "name": "Other",
+        "description": "1",
+        "imageUrl": "icons/ic_apps_24px.svg",
+        "apps": []
+  }
+]

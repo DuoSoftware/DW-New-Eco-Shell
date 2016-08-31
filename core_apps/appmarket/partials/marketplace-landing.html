@@ -1,0 +1,111 @@
+<div style="width:100%;height:48px;background-color:{{mp.theme.primary}};position:fixed;top:0px;left:0px;z-index:1;"></div>
+<div style="width:100%;" layout="column" layout-align="start center">
+    <div class="core-app-main-banner" layout="column" layout-align="start center" style="background-color:{{mp.theme.primary}};overflow:hidden;padding-bottom:50px;">
+
+        <ng-coverflow ng-hide="mp.topRatedAppsProgress" wrap-around="true" offset="85" items="mp.topRatedApps" selected-index="2" zoom="0" brightness="0.8" item-click="showApplicationDetailedView(item)"></ng-coverflow>
+        <md-progress-circular ng-show="mp.topRatedAppsProgress" class="md-accent" md-mode="indeterminate" md-diameter="70"></md-progress-circular>
+    </div>
+</div>
+
+<div layout="row" layout-align="center center" class="marketplace-nav">
+    <md-button ng-click="mp.mpIndex = 0;" ng-class="{'md-accent':mp.mpIndex === 0,'md-raised':mp.mpIndex ===0}">
+        <md-icon md-svg-icon="icons/ic_apps_24px.svg"></md-icon>
+    </md-button>
+    <md-button ng-click="mp.mpIndex = 1;" ng-class="{'md-accent':mp.mpIndex === 1,'md-raised':mp.mpIndex ===1}">
+        <md-icon md-svg-icon="icons/ic_get_app_24px.svg"></md-icon>
+    </md-button>
+</div>
+
+<div class="core-app-content-banner" layout="column" layout-align="start center" style="margin-top:-34px;background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));border-top: 1px solid rgba(158,158,158,0.2);">
+    <md-tabs class="marketplace-tabs" md-dynamic-height md-border-bottom style="width:100%;margin-top:30px;" md-selected="mp.mpIndex" ng-init="mp.mpIndex = 0;">
+        <md-tab label="all">
+            <div style="width:100%;" layout="column" layout-align="start center">
+
+                <div class="core-app-content-flat" layout="row" layout-align="center start" layout-wrap>
+                    <md-button ng-class="{'md-raised md-primary':mp.categoryIndex === $index}" class="marketplace-categories" ng-repeat="item in mp.categories" ng-click="mp.categoryIndex = $index ;mp.getAppsFor(item,$index);">
+                        <div layout="row" layout-align="center center">
+                            <md-icon md-svg-icon="{{::item.imageUrl}}"></md-icon>
+                            <p>{{::item.name}}</p>
+                        </div>
+                    </md-button>
+                </div>
+
+                <md-tabs class="marketplace-tabs" md-dynamic-height md-border-bottom style="width:100%;min-height:50vh;" md-selected="mp.categoryIndex" ng-init="mp.categoryIndex = 0">
+                    <md-tab label="cat.name" ng-repeat="cat in mp.categories">
+                        <div style="width:100%;" layout="column" layout-align="start center">
+                            <div class="core-app-content-flat" layout="column" layout-align="start center">
+                                <div class="title" layout="row" layout-align="space-between center">
+                                    <div layout="column" layout-align="center start ">
+                                        <h3>{{::cat.name}}</h3>
+                                        <p>{{cat.apps.length}} apps</p>
+                                    </div>
+                                    <!--                                   <md-button class="md-primary">view All</md-button>-->
+                                </div>
+                                <div class="content" layout="row" layout-align="start start" layout-wrap>
+                                    <md-card flex-lg="20" flex="23" ng-repeat="fa in cat.apps track by $index | limitTo : 4" class="marketplace-app-card" layout="column" layout-align="start center" ng-click="showApplicationDetailedView(fa)">
+                                        <img src="{{fa.iconUrl}}" err-src="images/market.jpg">
+                                        <h3>{{fa.name}}</h3>
+                                        <p>{{fa.developer}}</p>
+                                        <div layout="row" layout-align="space-between center" class="marketplace-app-card-footer">
+                                            <star-rating-num rating="fa.rating">
+                                            </star-rating-num>
+                                            <p>{{fa.price | currency}}</p>
+                                        </div>
+                                    </md-card>
+                                </div>
+                            </div>
+                        </div>
+                    </md-tab>
+
+                </md-tabs>
+                <md-divider class="core-app-content-divider"></md-divider>
+                <div class="core-app-content-flat" layout="column" layout-align="start center">
+                    <div class="title" layout="row" layout-align="space-between center">
+                        <div layout="column" layout-align="center start ">
+                            <h3>Recommended</h3>
+                            <p>
+                                10 apps</p>
+                        </div>
+                        <md-button class="md-primary">view All</md-button>
+                    </div>
+                    <div class="content" layout="row" layout-align="start start">
+                        <md-card flex-gt-lg="20" flex="23" ng-repeat="fa in mp.featuredApps | limitTo : 4" class="marketplace-app-card" layout="column" layout-align="start center" ng-click="showApplicationDetailedView(fa)">
+                            <img src="{{fa.iconUrl}}" err-src="images/market.jpg">
+                            <h3>{{fa.name}}</h3>
+                            <p>{{fa.developer}}</p>
+                            <div layout="row" layout-align="space-between center" class="marketplace-app-card-footer">
+                                <star-rating-num rating="fa.avgrating">
+                                </star-rating-num>
+                                <p>{{fa.price | currency}}</p>
+                            </div>
+                        </md-card>
+                    </div>
+                </div>
+
+            </div>
+        </md-tab>
+        <md-tab label="My apps">
+            <div style="width:100%;" layout="column" layout-align="start center">
+                <div class="core-app-content-flat" layout="column" layout-align="start center">
+                    <div class="title" layout="row" layout-align="space-between center">
+                        <div layout="column" layout-align="center start ">
+                            <h3>My Apps</h3>
+                            <p>4 apps</p>
+                        </div>
+                        <!--                        <md-button class="md-primary">view All</md-button>-->
+                    </div>
+                    <div class="content" layout="row" layout-align="start start" layout-wrap>
+                        <md-card flex-gt-lg="20" flex="23" ng-repeat="fa in mp.myApps track by $index" class="marketplace-app-card" layout="column" layout-align="start center" ng-click="mp.showMyApplicationDetailedView(fa)">
+                            <img src="{{fa.iconUrl}}" err-src="images/market.jpg">
+                            <h3>{{fa.Name}}</h3>
+                            <p>{{fa.AppType}}</p>
+                            <div layout="row" layout-align="space-between center" class="marketplace-app-card-footer">
+                            </div>
+                        </md-card>
+                    </div>
+                </div>
+            </div>
+
+        </md-tab>
+    </md-tabs>
+</div>

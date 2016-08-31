@@ -1,0 +1,115 @@
+<div style="width:100%;height:48px;background-color:rgba(0, 0, 0, 0.35);position:fixed;top:0px;left:0px;z-index:2;"></div>
+<coreapp-profile-container routedappname="'hello'" routedappimguri="mp.selectedApp.images[0]" accentpalette="mp.theme.primary">
+
+    <div style="width:100%;min-height:100vh;" layout="column" layout-align="start center">
+        <div layout-gt-sm="row" layout-align-gt-sm="start end" class="profile-content-flat" layout="column" layout-align="start center">
+            <div layout="column" layout-align="center center" class="profile-banner-image">
+                <img ng-src="{{mp.selectedApp.iconUrl}}" err-src="images/market.jpg" style="padding:10px;" />
+
+                <div layout="row" layout-align="space-between center" style="width:100%;margin:5px;">
+                    <md-button flex class="md-raised md-primary" ng-click="mp.download(mp.selectedApp,$event)" ng-if="mp.buttonText != 'Uninstall'">{{mp.buttonText}}</md-button>
+
+                    <md-button flex class="md-raised md-warn" ng-click="mp.uninstall(mp.selectedApp,$event)" ng-if="mp.buttonText == 'Uninstall'">{{mp.buttonText}}</md-button>
+                </div>
+
+            </div>
+            <div layout="column" layout-align-gt-sm="end start" layout-align="start center" class="profile-banner-info">
+                <p>{{mp.selectedApp.catogery}}</p>
+                <h2>{{mp.selectedApp.name}}</h2>
+                <div layout="row" layout-align="space-between center">
+                    <p>{{mp.selectedApp.developer}}</p>
+
+                    <star-rating-num rating="mp.selectedApp.avgrating">
+                    </star-rating-num>
+                </div>
+                <p>{{mp.selectedApp.contact}} </p>
+                <p>{{mp.selectedApp.description}}</p>
+            </div>
+        </div>
+        <md-divider class="core-app-content-divider"></md-divider>
+
+        <div layout-gt-sm="row" layout-align-gt-sm="start end" class="profile-content-flat" layout="column" layout-align="start center">
+            <ks-swiper-container initial-slide="0" loop="false" show-nav-buttons="false" slides-per-view="1.2" space-between="5" pagination-clickable="true" pagination-is-active="true">
+                <ks-swiper-slide class="swiper-slide" ng-repeat="s in mp.selectedApp.images track by $index">
+                    <div class="marketplace-gallery-item"><img ng-src="{{s}}" err-src="images/market3.jpg"></div>
+                </ks-swiper-slide>
+            </ks-swiper-container>
+        </div>
+
+
+        <md-tabs class="marketplace-tabs" md-dynamic-height md-border-bottom style="width:100%;" md-selected="mp.ratingIndex" ng-init="mp.ratingIndex =0">
+            <md-tab label="avg">
+                <div class="core-app-content-banner" layout="column" layout-align="start center" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));border-top: 1px solid rgba(158,158,158,0.2);" layout="row" layout-align="center start">
+                    <div class="profile-content-flat" layout="column" layout-align="start center">
+                        <div layout="row" layout-align="space-between center" style="width:100%;" layout-padding>
+                            <p flex>{{mp.allRatings.length}} people reviewed this application</p>
+                            <star-rating flex="50" rating="mp.selectedApp.rating" read-only="true" max-rating="5">
+                            </star-rating>
+                            <md-button flex class="md-primary" ng-click="mp.ratingIndex = 1;"> Write a Review</md-button>
+                        </div>
+                        <div layout="row" layout-align="center center" style="width:100%;padding:10px;">
+                            <div style="width:calc(({{mp.selectedApp.one}} / {{mp.allRatings.length}} ) * 100%);" layout="column" layout-align="center center">
+                                <div style="width:100%;height:20px;background-color:#F44336;">
+                                </div>
+                                <p ng-hide="mp.selectedApp.one == 0">{{mp.selectedApp.one}}</p>
+                            </div>
+                            <div style="width:calc(({{mp.selectedApp.two}} / {{mp.allRatings.length}} ) * 100%);" layout="column" layout-align="center center">
+                                <div style="width:100%;height:20px;background-color:#FBC02D;"></div>
+                                <p ng-hide="mp.selectedApp.two == 0">{{mp.selectedApp.two}}</p>
+                            </div>
+
+                            <div style="width:calc(({{mp.selectedApp.three}} / {{mp.allRatings.length}} ) * 100%);" layout="column" layout-align="center center">
+                                <div style="width:100%;height:20px;background-color:#FFA000;"></div>
+                                <p ng-hide="mp.selectedApp.three == 0">{{mp.selectedApp.three}}</p>
+                            </div>
+
+                            <div style="width:calc(({{mp.selectedApp.four}} / {{mp.allRatings.length}} ) * 100%);" layout="column" layout-align="center center">
+                                <div style="width:100%;height:20px;background-color:#CDDC39;"></div>
+                                <p ng-hide="mp.selectedApp.four == 0">{{mp.selectedApp.four}}</p>
+                            </div>
+
+                            <div style="width:calc(({{mp.selectedApp.five}} / {{mp.allRatings.length}} ) * 100%);" layout="column" layout-align="center center">
+                                <div style="width:100%;height:20px;background-color:#388E3C;"></div>
+                                <p ng-hide="mp.selectedApp.five == 0">{{mp.selectedApp.five}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </md-tab>
+            <md-tab label="mine">
+                <div class="core-app-content-banner" layout="column" layout-align="start center" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));border-top: 1px solid rgba(158,158,158,0.2);" layout="row" layout-align="center start">
+                    <div class="profile-content-flat" layout="column" layout-align="start center">
+                        <div star-rating-two rating="mp.myRating.stars" style="transform: scale(2);margin:15px;" read-only="false" max-rating="5" mouse-hover="mouseHover1(param)" mouse-leave="mouseLeave1(param)">
+                        </div>
+                        <md-input-container class="md-block" style="width:90%;">
+                            <label>How's it?</label>
+                            <textarea ng-model="mp.myRating.description" md-maxlength="150" rows="4" md-select-on-focus></textarea>
+                        </md-input-container>
+                        <div layout="row" layout-align="end center" style="width:90%;">
+                            <md-button ng-click="mp.ratingIndex = 0;">Cancel</md-button>
+                            <md-button class="md-primary" ng-click="mp.rateApp(mp.myRating.stars,mp.selectedApp,mp.myRating.description)">Comment</md-button>
+                        </div>
+                    </div>
+                </div>
+            </md-tab>
+        </md-tabs>
+
+        <md-divider class="core-app-content-divider"></md-divider>
+        <div class="profile-content-flat" layout="row" layout-align="start start" layout-align-xs="center start" layout-wrap>
+            <div flex="33" flex-xs="90" flex-sm="45" ng-repeat="comment in mp.allRatings track by $index" layout="column" layout-align="start start" class="marketplace-comment-card">
+                <div layout="row" layout-align="space-between start">
+                    <div layout="row" layout-align="start center">
+                        <img src="{{comment.imageurl}}" err-src="images/usercover4.jpg">
+                        <div layout="column" layout-align="center start">
+                            <h3>{{comment.name}}</h3>
+                            <star-rating-num rating="comment.stars">
+                        </div>
+                    </div>
+                    <p style="font-size:12px;">{{comment.date | date:'medium'}}</p>
+                </div>
+                <p><b>{{comment.title}}</b></p>
+                <p>{{comment.description}}</p>
+            </div>
+        </div>
+    </div>
+</coreapp-profile-container>

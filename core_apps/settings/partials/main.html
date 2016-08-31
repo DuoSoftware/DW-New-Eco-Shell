@@ -1,0 +1,34 @@
+<coreapp-container routedappname="'User Administration'" routedappiconuri="routedAppIconUri" accentpalette="theme.primary">
+    <perfect-scrollbar class="systemTrayScroller" wheel-propagation="false" wheel-speed="6">
+        <md-content md-theme="amber-dark" ng-controller="AppCtrl" style="min-height:100vh;">
+            <div style="min-height:100vh;background-color: rgba(0, 0, 0, 0.24);">
+                <div style="width:100%;height:48px;background-color:{{theme.primary}};position:fixed;top:0px;left:0px;z-index:1;"></div>
+
+                <div style="width:100%;" layout="column" layout-align="start center">
+                    <div class="core-app-main-banner userAdmin-banner" layout="column" layout-align="end center" style="background-color:{{theme.primary}};overflow:hidden;padding-bottom:50px;min-height:50vh;">
+
+                        <img ng-src="{{$root.profilePicture}}" err-src="images/usercover1.jpg" class="md-whiteframe-10dp user-image" />
+                        <h1>{{owernUser.Name}}</h1>
+                        <h3>{{owernUser.Email}}</h3>
+                        <p>manage users, groups, and share applications</p>
+                    </div>
+                </div>
+
+                <div layout="row" layout-align="center center" class="userAdmin-nav">
+                    <md-button ng-click="selectedIndex = 0;changeTab(selectedIndex);" ng-class="{'md-accent':selectedIndex === 0,'md-raised':selectedIndex ===0}">
+                        <md-icon md-svg-icon="icons/ic_person_24px.svg"></md-icon>
+                    </md-button>
+                    <md-button ng-click="selectedIndex = 1;changeTab(selectedIndex);" ng-class="{'md-accent':selectedIndex === 1,'md-raised':selectedIndex ===1}">
+                        <md-icon md-svg-icon="icons/ic_group_24px.svg"></md-icon>
+                    </md-button>
+                    <md-button ng-click="selectedIndex = 2;changeTab(selectedIndex);" ng-class="{'md-accent':selectedIndex === 2,'md-raised':selectedIndex ===2}">
+                        <md-icon md-svg-icon="icons/ic_share_24px.svg"></md-icon>
+                    </md-button>
+                </div>
+
+
+                <div class="container" ui-view layout="column" layout-align="start center"></div>
+            </div>
+        </md-content>
+    </perfect-scrollbar>
+</coreapp-container>

@@ -1,0 +1,117 @@
+<md-dialog>
+    <md-content layout="row" layout-align="start end" class="checkout-container" style="background: linear-gradient({{co.shellConfig.themeconfiguration.primarypalette}}, rgba(0,0,0,0.54));background-color:{{co.shellConfig.themeconfiguration.primarypalette}};">
+        <div layout="column" layout-align="end start" flex="40" hide-sm hide-xs class="details-container">
+            <p>{{co.plan.name}}</p>
+            <h2>{{co.plan.price | currency}} <span>{{co.plan.per}}</span></h2>
+            <p>{{co.plan. numberOfUsers}} Users </p>
+            <p>{{co.plan. numberOfApps}} Apps </p>
+            <p> {{co.plan.storage}}</p>
+        </div>
+        <md-tabs md-dynamic-height md-border-bottom md-selected="co.checkoutIndex" flex ng-init="co.checkoutIndex = 0;" style="margin-top: -49px;">
+            <md-tab label="checkout">
+                <md-content layout="column" layout-align="start start" flex class="summery-container">
+                    <div layout="row" layout-align="space-between center" style="width:100%;">
+                        <h3>Payment Information</h3>
+                        <md-button ng-click="co.checkoutIndex = 1;">add new</md-button>
+                    </div>
+
+                    <md-divider></md-divider>
+                    <ks-swiper-container style="width:100%" initial-slide="co.defaultCardIndex" loop="false" show-nav-buttons="true" slides-per-view="1" space-between="5" pagination-is-active="false">
+                        <ks-swiper-slide class="swiper-slide" ng-repeat="card in co.account.AccountCards track by $index" layout="row" layout-align="center center">
+                            <credit-card card="card"></credit-card>
+                        </ks-swiper-slide>
+                    </ks-swiper-container>
+                    <h3>Summery</h3>
+                    <md-divider></md-divider>
+                    <div layout="row" layout-align="space-between center" style="width:100%;">
+                        <p>Plan - {{co.plan.name}}</p>
+                        <p>{{co.plan.price | currency}}</p>
+                    </div>
+                    <md-divider></md-divider>
+                    <div layout="row" layout-align="space-between center" style="width:100%;">
+                        <p><b>Total</b></p>
+                        <p>{{co.plan.price | currency}}</p>
+                    </div>
+                    <div layout="row" layout-align="end center" style="width:100%;padding:10px;">
+                        <md-button class="md-primary">Pay</md-button>
+                    </div>
+                </md-content>
+
+            </md-tab>
+            <md-tab label="add">
+                <md-content layout="column" layout-align="start center" flex class="summery-container">
+
+                    <credit-card card="co.card"></credit-card>
+
+                    <p ng-show="!(co.cardTypes | filterByPattern:co.card.CardNo).length" style="color:red;font-size:20px;animation: scaleUp 0.3s ease-in;text-align:center;margin:5px;">Invalid card number</p>
+                    <form name="co.editForm">
+                        <div layout-gt-sm="row" style="width:100%">
+                            <md-input-container class="md-block" flex>
+                                <label>Card Number</label>
+                                <input required name="CardNo" ng-model="co.card.CardNo" angular-mask="0000-0000-0000-0000">
+                                <!--ng-pattern="cardType.regExPattern"  minlength="15" md-maxlength="16"-->
+                                <div class="hint">xxxx-xxxx-xxxx-xxxx</div>
+                                <div ng-messages="co.editForm.CardNo.$error">
+                                    <div ng-message-exp="['required']">Card No. is required</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <div layout-gt-sm="row" style="width:100%">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Name On Card</label>
+                                <input required name="Name" ng-model="co.card.Name">
+                                <div ng-messages="co.editForm.Name.$error">
+                                    <div ng-message="required">Name is required.</div>
+                                </div>
+                            </md-input-container>
+
+                        </div>
+                        <div layout-gt-sm="row" layout-align-gt-sm="center center" style="width:100%">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>CVV</label>
+                                <input required name="CSV" ng-model="co.card.CSV" minlength="3" md-maxlength="4" maxlength="4">
+                                <div ng-messages="co.editForm.CSV.$error">
+                                    <div ng-message-exp="['required']">CVV No. is required</div>
+                                    <div ng-message-exp="['minlength', 'maxlength']">Invalid CVV number</div>
+                                </div>
+                            </md-input-container>
+                            <div flex>
+
+                                <div layout="row" layout-align="center center">
+                                    <md-input-container flex style="padding-bottom:1px;">
+                                        <label>Expiry Year</label>
+                                        <md-select ng-model="co.card.ExpiryYear" ng-change="co.yearChanged(co.card.ExpiryYear)" flex required>
+                                            <md-option ng-repeat="year in co.years" value="{{year}}">{{year}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container flex style="padding-bottom:1px;">
+                                        <label>Month</label>
+                                        <md-select ng-model="co.card.ExpiryMonth" ng-disabled="co.card.ExpiryYear.length != 4" required>
+                                            <md-option ng-repeat="month in co.months" value="{{month}}">{{month}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div layout="row" layout-align="end center" style=";width:100%;" layout-padding>
+
+
+                            <md-button type="button" ng-click="co.checkoutIndex= 0;">
+                                cancel
+                            </md-button>
+
+                            <md-button ng-click="co.addNewCard(co.card)" class="md-primary" ng-disabled="co.editForm.$invalid">
+                                <span>Save Card & proceed</span>
+                            </md-button>
+
+                        </div>
+                    </form>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
+</md-dialog>

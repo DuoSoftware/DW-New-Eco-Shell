@@ -1,0 +1,84 @@
+.user-image {
+    width: 200px;
+    margin: 15px;
+}
+.userAdmin-banner h1,
+.userAdmin-banner h3,
+.userAdmin-banner p {
+    font-weight: 300;
+    margin: 5px;
+    color: rgba(255, 255, 255, 0.82)
+}
+.userAdmin-banner h1 {
+    color: rgba(255, 255, 255, 0.92);
+}
+.userAdmin-nav {
+    margin-top: -35px;
+}
+.userAdmin-nav button {
+    margin: 10px !important;
+    border-radius: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5px;
+    width: 48px;
+    background-color: rgba(158, 158, 158, 0.2);
+    z-index: 1;
+}
+.userAdmin-app-card {
+    min-width: 140px;
+    /*    height: 280px;*/
+    max-height: 280px;
+    cursor: pointer;
+    /*    min-height: 280px;*/
+    transition: ease-in 0.3s;
+}
+.userAdmin-app-card .img {
+    width: 100%;
+    min-height: 160px;
+    /*    margin: 20px;*/
+}
+.userAdmin-app-card img {
+    width: 65%;
+    /*    min-height: 160px;*/
+    margin: 20px;
+}
+.userAdmin-app-card h3 {
+    font-weight: 300;
+    margin: 6px;
+    text-align: center;
+}
+.userAdmin-app-card p {
+    font-weight: 300;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 1px;
+}
+.userAdmin-app-card-footer {
+    width: 100%;
+    padding: 15px;
+}
+.userAdmin-search-container {
+    width: 100%;
+    max-width: 960px;
+}
+.selectedGroup {
+    min-width: 960px;
+    transition: ease-in 0.3s;
+    min-height: inherit;
+}
+.settings-group-tabs {
+    margin-top: -40px;
+    width: 100%;
+    max-width: 960px;
+}
+.settings-group-tabs md-tabs-wrapper {
+    visibility: hidden;
+}
+.settings-share-apps-tab {
+    min-width: 200px;
+    width: 100%;
+    height: 100%;
+}
+.settings-share-apps-tab md-tabs-wrapper {
+    visibility: visible;
+}

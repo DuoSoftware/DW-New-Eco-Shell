@@ -1,0 +1,132 @@
+.featured-app-card {
+    min-width: 210px;
+    width: 210px;
+    background-color: rgba(0, 0, 0, 0.12) !important;
+    background-size: 210px 280px;
+    height: 400px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    background-size: 80%;
+    background-position: 50% 50px;
+}
+.marketplace-app-card {
+    min-width: 140px;
+    /*    height: 300px;*/
+    cursor: pointer;
+    min-height: 230px;
+}
+.featured-app-card h2 {
+    font-weight: 300;
+    margin: 6px;
+}
+.featured-app-card p {
+    font-weight: 300;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 1px;
+}
+.featured-app-card-footer {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.26));
+}
+.marketplace-app-card img {
+    width: 65%;
+    /*    height: 100px;*/
+    margin: 20px;
+}
+.marketplace-app-card h3 {
+    font-weight: 300;
+    margin: 6px;
+    text-align: center;
+}
+.marketplace-app-card p {
+    font-weight: 300;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 1px;
+}
+.marketplace-app-card-footer {
+    width: 100%;
+    padding: 15px;
+}
+.featured-focused {
+    min-width: 400px;
+    width: 400px;
+    height: 400px;
+    background-size: 400px 400px;
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.54) !important;
+    background-position: 50% 50%;
+    background-size: 80%;
+}
+.marketplace-gallery-item img {
+    width: 100%;
+    max-height: 50vh;
+    height: 50vh;
+}
+.marketplace-comment-card {
+    width: 250px;
+    font-weight: 300;
+    padding: 15px;
+}
+.marketplace-comment-card div {
+    width: 100%;
+}
+.marketplace-comment-card h3 {
+    font-weight: 300;
+    margin: 3px;
+}
+.marketplace-comment-card h4 {
+    font-weight: 300;
+    margin: 3px;
+}
+.marketplace-comment-card img {
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    margin: 5px;
+}
+.marketplace-comment-card p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 15px;
+    margin: 3px;
+}
+.marketplace-comment-card b {
+    color: rgba(255, 255, 255, 0.8);
+}
+.marketplace-comment-card star-rating-num {
+    height: 30px;
+    margin-top: -7px;
+}
+.marketplace-tabs md-tabs-wrapper {
+    visibility: hidden;
+    margin-top: -40px;
+}
+.marketplace-nav {
+    margin-top: -35px;
+}
+.marketplace-nav button {
+    margin: 10px !important;
+    border-radius: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 5px;
+    width: 48px;
+    background-color: rgba(158, 158, 158, 0.2);
+    z-index: 1;
+}
+.marketplace-categories {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 5px;
+    padding: 3px;
+    margin: 5px !important;
+}
+.marketplace-categories p {
+    margin: 2px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+}
+.marketplace-categories md-icon {
+    color: rgba(255, 255, 255, 0.44);
+    margin: 3px;
+}
